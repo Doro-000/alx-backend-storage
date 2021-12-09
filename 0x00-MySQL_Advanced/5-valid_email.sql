@@ -3,14 +3,12 @@ DELIMITER //
 
 CREATE
 	TRIGGER reset_attribute
-	AFTER UPDATE
+	BEFORE UPDATE
 	ON users FOR EACH ROW
 	BEGIN
-		IF users.email != NEW.email
+		IF OLD.email != NEW.email
 		THEN
-			UPDATE users
-			SET valid_email = 0
-			WHERE id = NEW.id;
+			SET NEW.valid_email = 0;
 		END IF;
 	END//
 DELIMITER ;
