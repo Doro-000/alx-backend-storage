@@ -2,7 +2,7 @@
 DELIMITER //
 
 CREATE
-  PROCEDURE AddBonus (IN user_id INT, INOUT project_name VARCHAR(255), IN score INT)
+  PROCEDURE AddBonus (IN user_id INT, IN project_name VARCHAR(255), IN score INT)
   BEGIN
     IF (SELECT project_name NOT IN (SELECT name FROM projects) = 1)
     THEN

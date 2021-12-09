@@ -1,4 +1,4 @@
---- creates a trigger that decreases the quantity of an item after adding a new order.
+-- creates a trigger that decreases the quantity of an item after adding a new order.
 
 CREATE
   TRIGGER decrease_when_add

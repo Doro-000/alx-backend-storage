@@ -5,7 +5,7 @@ CREATE
   PROCEDURE ComputeAverageScoreForUser (IN user_id INT)
   BEGIN
     DECLARE
-      stud_avg INT;
+      stud_avg FLOAT;
     SET stud_avg = (SELECT
                     AVG(score)
                     FROM corrections
