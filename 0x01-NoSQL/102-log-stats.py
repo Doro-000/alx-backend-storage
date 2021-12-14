@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """ nginx logs to mongo instance parser """
 
-from pymongo import MongoClient, aggregation
-from collections import Counter
+from pymongo import MongoClient
 
 
 if __name__ == "__main__":
