@@ -9,6 +9,5 @@ def update_topics(mongo_collection, name, topics):
     """
       implementation
     """
-    insert_obj = mongo_collection.update(
+    mongo_collection.update_many(
         {"name": name}, {"$set": {"topics": topics}})
-    return insert_obj.inserted_id

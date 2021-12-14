@@ -9,4 +9,4 @@ def schools_by_topic(mongo_collection, topic):
     """
       implementation
     """
-    return mongo_collection.find({"topic": {"$elemMatch": topic}})
+    return mongo_collection.find({"topics": {"$elemMatch": topic}})
