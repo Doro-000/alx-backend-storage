@@ -23,7 +23,7 @@ def count_decorator(func: callable) -> callable:
             cache.setex(key, 10, 1)
         else:
             cache.incr(key)
-        func(url)
+        return func(url)
     return cache
 
 

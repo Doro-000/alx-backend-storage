@@ -53,7 +53,7 @@ def replay(function: callable) -> None:
             function.__qualname__,
             my_redis.llen(input_key)))
     for op in zip(inputs, outputs):
-        print("function.__qualname__({}) -> {}".format(op[0], op[1]))
+        print("{}({}) -> {}".format(function.__qualname__, op[0], op[1]))
 
 
 class Cache:
