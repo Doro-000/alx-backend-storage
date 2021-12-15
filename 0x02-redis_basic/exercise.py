@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Writing strings to Redis
+Caching information about function call history to redis
 """
 
 import redis
@@ -39,7 +39,7 @@ def call_history(method: Callable) -> Callable:
     return store_history
 
 
-def replay(function: callable):
+def replay(function: callable) -> None:
     """
     replays the call history of a function
     """
@@ -61,7 +61,7 @@ class Cache:
     Cache class to handle caching using redis
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Initialization
         """

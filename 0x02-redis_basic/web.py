@@ -32,5 +32,5 @@ def get_page(url: str) -> str:
     """
     retrives the content of an html page, and also caches it
     """
-    content = get(url)
-    return content
+    html = get(url)
+    return html.content
