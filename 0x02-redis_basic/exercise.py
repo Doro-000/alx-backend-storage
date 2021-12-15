@@ -63,9 +63,6 @@ class Cache:
     """
 
     def __init__(self) -> None:
-        """
-        Initializes redis instance
-        """
         self._redis = redis.Redis()
         self._redis.flushdb()
 
@@ -75,7 +72,7 @@ class Cache:
         """
         stores data in redis using a random key and data as value
         """
-        key = str(uuid4())
+        key: str = str(uuid4())
         if (type(data) not in [int, float, bytes, str]):
             self._redis.set(key, str(data))
         else:
