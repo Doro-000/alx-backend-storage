@@ -51,9 +51,10 @@ def replay(function: callable) -> None:
     print(
         "{} was called {} times:".format(
             function.__qualname__,
-            my_redis.llen(input_key)))
+            int(my_redis.llen(input_key))))
     for op in zip(inputs, outputs):
-        print("{}({}) -> {}".format(function.__qualname__, op[0], op[1]))
+        print("{}(*{}) -> {}".format(function.__qualname__,
+              op[0].decode("utf-8"), op[1].decode("utf-8")))
 
 
 class Cache:
@@ -63,7 +64,7 @@ class Cache:
 
     def __init__(self) -> None:
         """
-        Initialization
+        Initializes redis instance
         """
         self._redis = redis.Redis()
         self._redis.flushdb()
@@ -75,7 +76,10 @@ class Cache:
         stores data in redis using a random key and data as value
         """
         key = str(uuid4())
-        self._redis.set(key, data)
+        if (type(data) not in [int, float, bytes, str]):
+            self._redis.set(key, str(data))
+        else:
+            self._redis.set(key, data)
         return key
 
     def get(self, key: str, fn: Callable = None):
